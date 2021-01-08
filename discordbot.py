@@ -10,6 +10,7 @@ async def on_message(message):
     if message.author.bot:
         return
     if 'こんにちは' in message.content:
-        await message.channel.send('こんにちはヒヒーン')
+        m = 'こんにちは' + message.author.name + 'ヒヒーン'
+        await message.channel.send(m)
 
 client.run(token)
