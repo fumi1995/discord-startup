@@ -20,7 +20,7 @@ async def send_message_default_channel(client, message_text):
     for guild in client.guilds:
         for channel in guild.channels:
             if channel.name == 'general' or channel.name == '一般':
-                await client.send_message(channel, message_text)
+                await channel.send(message_text)
 
 @client.event
 async def on_ready():
@@ -48,6 +48,6 @@ async def on_member_join(member):
         print('member join 2:' + channel.name)
         if channel.name == 'general' or channel.name == '一般':
             print('member join 3:' + channel.name)
-            await client.send_message(channel, member.display_name + 'ちゃん初めましてだヒヒン!')
+            await channel.send(member.display_name + 'ちゃん初めましてだヒヒン!')
 
 client.run(token)
