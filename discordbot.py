@@ -43,11 +43,6 @@ async def on_message(message):
 
 @client.event
 async def on_member_join(member):
-    print('member join:' + member.display_name)
-    for channel in member.server.channels:
-        print('member join 2:' + channel.name)
-        if channel.name == 'general' or channel.name == '一般':
-            print('member join 3:' + channel.name)
-            await channel.send(member.display_name + 'ちゃん初めましてだヒヒン!')
+    await send_message_default_channel(client, random.choice([member.display_name + "さんようこそ！ヒヒン！", member.display_name + "！はじめましてだ！ヒヒン！"]))
 
 client.run(token)
