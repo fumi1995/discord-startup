@@ -25,7 +25,7 @@ async def send_message_default_channel(client, message_text):
 @client.event
 async def on_ready():
     print('on_ready')
-    await send_message_default_channel(client, random.choice(['ヒヒーン！参上！', 'おはよー！ヒヒン！']))
+    #await send_message_default_channel(client, random.choice(['ヒヒーン！参上！', 'おはよー！ヒヒン！']))
     
 @client.event
 async def on_message_delete(message):
