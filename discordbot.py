@@ -9,8 +9,12 @@ intents.typing = False
 client = discord.Client(intents=intents)
 
 def hello(user_name):
-    hello_list = ['@' + user_name + '！こんにちは！ヒヒン！', '@' + user_name + '！元気だった？ヒヒン？', '今日馬レースする？' + user_name + 'ヒヒン？']
+    hello_list = [user_name + '！こんにちは！ヒヒン！', user_name + '！元気だった？ヒヒン？', '今日馬レースする？' + user_name + 'ヒヒン？']
     return random.choice(hello_list)
+
+def goodbye(user_name):
+    goodbye_list = [user_name + 'さんおやすみヒヒン', user_name + '乙', 'ねむみちゃんからの' + user_name + 'ちゃん']
+    return random.choice(goodbye_list)
 
 def drown():
     drown_list = ['ぶくぶくぶく...(白目)', 'ひ、ひ、ひひん...(白目)', '水は飲んでも溺れるなって死んだじいちゃんが言ってたんだ。ヒヒン。']
@@ -38,6 +42,8 @@ async def on_message(message):
         return
     if 'こんにちは' in message.content:
         await message.channel.send(hello(message.author.name))
+    if 'おやすみ' in message.content or '乙' in message.content or 'おつ' in message.content:
+        await message.channel.send(goodbye(message.author.name))
     if '水' in message.content or 'みず' in message.content:
         await message.channel.send(drown())
 
