@@ -23,7 +23,7 @@ async def ping(ctx):
 async def on_message(message):
     if message.author.bot:
         return
-    if message in 'こんにちは':
+    if message.content in 'こんにちは':
         await message.channel.send('こんにちはヒヒーン')
 
 bot.run(token)
