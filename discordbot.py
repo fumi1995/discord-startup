@@ -13,7 +13,7 @@ def hello(user_name):
     return random.choice(hello_list)
 
 def drown():
-    drown_list = ['ぶくぶくぶく...(白目)', 'ひ、ひ、ひひん...(白目)']
+    drown_list = ['ぶくぶくぶく...(白目)', 'ひ、ひ、ひひん...(白目)', '水は飲んでも溺れるなって死んだじいちゃんが言ってたんだ。ヒヒン。']
 
 @client.event
 async def on_message(message):
