@@ -25,21 +25,26 @@ async def send_message_default_channel(client, message_text):
 @client.event
 async def on_ready():
     print('on_ready')
-    #await send_message_default_channel(client, random.choice(['ヒヒーン！参上！', 'おはよー！ヒヒン！']))
     
 @client.event
 async def on_message_delete(message):
     print('on_message_delete')
-    await send_message_default_channel(client, random.choice(['今"'+ message.content +'"ってやつ消した？ヒヒン？']))
+    await message.channel.send(random.choice(['今"'+ message.content +'"ってやつ消した？ヒヒン？']))
 
 @client.event
 async def on_message(message):
+    print('on_message')
     if message.author.bot:
         return
     if 'こんにちは' in message.content:
         await message.channel.send(hello(message.author.name))
     if '水' in message.content or 'みず' in message.content:
         await message.channel.send(drown())
+
+@client.event
+async def on_reaction_add(reaction, user):
+    print('on_reaction_add')
+
 
 @client.event
 async def on_member_join(member):
