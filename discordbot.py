@@ -13,7 +13,7 @@ async def on_message(message):
         return
     if 'こんにちは' in message.content:
         m = 'こんにちは' + message.author.name + 'ヒヒーン'
-        prinit('send message')
+        print('send message')
         await message.channel.send(m)
 
 @client.event
