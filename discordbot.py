@@ -27,3 +27,4 @@ async def on_message(message):
         await message.channel.send('こんにちはヒヒーン')
 
 bot.run(token)
+client.run(token)
