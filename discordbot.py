@@ -9,7 +9,7 @@ intents.typing = False
 client = discord.Client(intents=intents)
 
 def hello(user_name):
-    hello_list = [user_name + '！こんにちは！ヒヒン！', user_name + '！元気だった？ヒヒン？', '今日馬レースする？' + user_name + 'ヒヒン？']
+    hello_list = [user_name + '！こんにちは！ヒヒン！', user_name + '！元気だった？ヒヒン？', user_name + 'さん今日馬レースする？ヒヒン？']
     return random.choice(hello_list)
 
 def goodbye(user_name):
@@ -40,7 +40,7 @@ async def on_message(message):
     print('on_message')
     if message.author.bot:
         return
-    if 'こんにちは' in message.content:
+    if 'こんにち' in message.content or 'おは' in message.content or 'こんばん' in message.content:
         await message.channel.send(hello(message.author.name))
     if 'おやすみ' in message.content or '乙' in message.content or 'おつ' in message.content:
         await message.channel.send(goodbye(message.author.name))
