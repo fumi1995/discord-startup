@@ -14,6 +14,23 @@ def hello(user_name):
 
 def drown():
     drown_list = ['ぶくぶくぶく...(白目)', 'ひ、ひ、ひひん...(白目)', '水は飲んでも溺れるなって死んだじいちゃんが言ってたんだ。ヒヒン。']
+    return random.choice(drown_list)
+
+async def send_message_default_channel(client, message_text):
+    for guild in client.guilds:
+        for channel in guild.channels:
+            if channel.name == 'general' or channel.name == '一般':
+                await client.send_message(channel, message_text)
+
+@client.event
+async def on_ready():
+    print('on_ready')
+    await send_message_default_channel(client, random.choice(['ヒヒーン！参上！', 'おはよー！ヒヒン！']))
+    
+@client.event
+async def on_message_delete(message):
+    print('on_message_delete')
+    await send_message_default_channel(client, random.choice(['今"'+ message.content +'"ってやつ消した？ヒヒン？']))
 
 @client.event
 async def on_message(message):
