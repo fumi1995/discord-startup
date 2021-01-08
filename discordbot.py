@@ -3,7 +3,9 @@ import os
 import traceback
 
 token = os.environ['DISCORD_BOT_TOKEN']
-client = discord.Client()
+intents = discord.Intents.all()
+intents.typing = False
+client = discord.Client(intents=intents)
 
 
 
