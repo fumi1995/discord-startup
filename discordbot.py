@@ -13,8 +13,7 @@ client = discord.Client(intents=intents)
 # aternos
 headers_cookie = os.environ['ATERNOS_HEADERS_COOKIE']
 cookie = os.environ['ATERNOS_COOKIE']
-asec = os.environ['ATERNOS_ASEC']
-aternos_server = aternos_api.AternosAPI(headers_cookie, cookie, asec)
+aternos_server = aternos_api.AternosAPI(headers_cookie, cookie)
 
 def hello(user_name):
     hello_list = [user_name + '！こんにちは！ヒヒン！', user_name + '！元気だった？ヒヒン？', user_name + 'さん今日馬レースする？ヒヒン？']
