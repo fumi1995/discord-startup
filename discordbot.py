@@ -28,9 +28,12 @@ def drown():
     return random.choice(drown_list)
 
 async def reply(message):
-    if 'サーバー' in message.content:
+    if 'サーバー立てて' in message.content or 'サーバー起動' in message.content:
         aternos_server.StartServer()
         await message.channel.send(random.choice([message.author.name + 'さん了解！サーバー立てるヒヒン！', message.author.name + '！わかったヒヒン！サーバー立てるヒヒン！']))
+    if 'サーバーの状態' in message.content:
+        status = aternos_server.GetStatus()
+        await message.channel.send(random.choice(['サーバーの状態はこんな感じヒヒン！\n' + status]))
     else:
         await message.channel.send(random.choice(['なになに？', 'ぱーどぅん？', message.content + 'ってなんだヒヒン？']))
         
