@@ -35,7 +35,7 @@ async def reply(message):
         status = aternos_server.GetStatus()
         await message.channel.send(random.choice(['サーバーの状態はこんな感じヒヒン！\n' + status]))
     else:
-        await message.channel.send(random.choice(['なになに？', 'ぱーどぅん？', message.content + 'ってなんだヒヒン？']))
+        await message.channel.send(random.choice(['なになに？', 'ぱーどぅん？', 'もう一度言ってくれないかヒヒン？']))
         
 
 async def send_message_default_channel(client, message_text):
