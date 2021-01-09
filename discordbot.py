@@ -2,11 +2,19 @@ import discord
 import os
 import traceback
 import random
+import .Plugin from aternos_api
 
+# discord
 token = os.environ['DISCORD_BOT_TOKEN']
 intents = discord.Intents.all()
 intents.typing = False
 client = discord.Client(intents=intents)
+
+# aternos
+headers_cookie = os.environ['ATERNOS_HEADERS_COOKIE']
+cookie = os.environ['ATERNOS_COOKIE']
+asec = os.environ['ATERNOS_ASEC']
+aternos_server = aternos_api.AternosAPI(headers_cookie, cookie, asec)
 
 def hello(user_name):
     hello_list = [user_name + '！こんにちは！ヒヒン！', user_name + '！元気だった？ヒヒン？', user_name + 'さん今日馬レースする？ヒヒン？']
@@ -19,6 +27,14 @@ def goodbye(user_name):
 def drown():
     drown_list = ['ぶくぶくぶく...(白目)', 'ひ、ひ、ひひん...(白目)', '水は飲んでも溺れるなって死んだじいちゃんが言ってたんだ。ヒヒン。']
     return random.choice(drown_list)
+
+async def reply(message):
+    if 'サーバー' in message.content:
+        aternos_server.StartServer()
+        await message.channel.send(random.choice([message.author.name + 'さん了解！サーバー立てるヒヒン！', message.author.name + '！わかったヒヒン！サーバー立てるヒヒン！']))
+    else:
+        await message.channel.send(random.choice(['なになに？', 'ぱーどぅん？', message.content + 'ってなんだヒヒン？']))
+        
 
 async def send_message_default_channel(client, message_text):
     for guild in client.guilds:
@@ -33,18 +49,20 @@ async def on_ready():
 @client.event
 async def on_message_delete(message):
     print('on_message_delete')
-    await message.channel.send(random.choice(['今"'+ message.content +'"ってやつ消した？ヒヒン？']))
+    await message.channel.send(random.choice(['今"'+ message.content +'"ってやつ消した？ヒヒン？', 'もしかして"'+ message.content +'"ってやつ今消した？ヒヒン？']))
 
 @client.event
 async def on_message(message):
     print('on_message')
     if message.author.bot:
         return
-    if 'こんにち' in message.content or 'おは' in message.content or 'こんばん' in message.content:
+    elif 'のり' in message.content or 'nori' in message.content or 'Nori' in message.content:
+        await reply(message)
+    elif 'こんにち' in message.content or 'おは' in message.content or 'こんばん' in message.content:
         await message.channel.send(hello(message.author.name))
-    if 'おやすみ' in message.content or '乙' in message.content or 'おつ' in message.content:
+    elif 'おやすみ' in message.content or '乙' in message.content or 'おつ' in message.content:
         await message.channel.send(goodbye(message.author.name))
-    if '水' in message.content or 'みず' in message.content:
+    elif '水' in message.content or 'みず' in message.content:
         await message.channel.send(drown())
 
 @client.event
