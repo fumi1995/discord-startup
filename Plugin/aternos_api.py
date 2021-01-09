@@ -8,7 +8,7 @@ class AternosAPI():
         self.TOKEN = TOKEN
         self.headers['User-Agent'] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0"
         self.headers['Cookie'] = headers
-        self.SEC = self.getSEC()
+        #self.SEC = self.getSEC()
         self.JavaSoftwares = ['Vanilla', 'Spigot', 'Forge', 'Magma','Snapshot', 'Bukkit', 'Paper', 'Modpacks', 'Glowstone']
         self.BedrockSoftwares = ['Bedrock', 'Pocketmine-MP']
 
@@ -38,7 +38,7 @@ class AternosAPI():
         else:
             parameters = {}
             parameters['headstart'] = 0
-            parameters['SEC'] = self.SEC
+            #parameters['SEC'] = self.SEC
             parameters['TOKEN'] = self.TOKEN
             startserver = requests.get(url=f"https://aternos.org/panel/ajax/start.php", params=parameters, headers=self.headers)
             return "Server Started"
@@ -49,7 +49,7 @@ class AternosAPI():
             return "Server Already Offline"
         else:
             parameters = {}
-            parameters['SEC'] = self.SEC
+            #parameters['SEC'] = self.SEC
             parameters['TOKEN'] = self.TOKEN
             stopserver = requests.get(url=f"https://aternos.org/panel/ajax/stop.php", params=parameters, headers=self.headers)
             return "Server Stopped"
