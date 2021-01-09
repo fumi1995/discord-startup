@@ -2,7 +2,7 @@ import discord
 import os
 import traceback
 import random
-from .Plugin import aternos_api
+from Plugin import aternos_api
 
 # discord
 token = os.environ['DISCORD_BOT_TOKEN']
