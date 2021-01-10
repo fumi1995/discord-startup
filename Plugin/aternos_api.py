@@ -27,6 +27,8 @@ class AternosAPI():
     def GetStatus(self):
         webserver = requests.get(url='https://aternos.org/server/', headers=self.headers)
         webdata = BeautifulSoup(webserver.content, 'html.parser')
+        print(webserver.content)
+        print(webdata)
         status = webdata.find('span', class_='statuslabel-label').get_text()
         status = status.strip()
         return status
