@@ -73,7 +73,7 @@ async def on_message(message):
     elif '競馬場' in message.content:
         await message.channel.send('あちチチチ')
     elif '笑' in message.content or 'w' in message.content or '草' in message.content:
-        await massage.channel.send('むっしゃァ…')
+        await mssage.channel.send('むっしゃァ…')
         
         
 @client.event
