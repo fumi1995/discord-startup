@@ -70,7 +70,12 @@ async def on_message(message):
         await message.channel.send(drown())
     elif '今何してる？' in message.content:
         await message.channel.send('ひひん')
-
+    elif '競馬場' in message.content:
+        await message.channel.send('あちチチチ')
+    elif '笑' in message.content or 'w' in message.content or '草' in message.content:
+        await massage.channel.send('むっしゃァ…')
+        
+        
 @client.event
 async def on_reaction_add(reaction, user):
     print('on_reaction_add')
