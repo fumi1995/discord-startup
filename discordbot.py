@@ -68,6 +68,8 @@ async def on_message(message):
         await message.channel.send(goodbye(message.author.name))
     elif '水' in message.content or 'みず' in message.content:
         await message.channel.send(drown())
+    elif '今何してる？' in message.content:
+        await message.channel.send('ひひん')
 
 @client.event
 async def on_reaction_add(reaction, user):
